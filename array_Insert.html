@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert Element in Array</title>
+    <script>
+        function Insert() {
+            let data = [60, 30, 10, 67, 40]; // Initial array
+            let newEl = document.getElementById('newEl').value; // Get new element value
+            let position = parseInt(document.getElementById('position').value); // Get position value
+            
+            // Validate inputs
+            if (isNaN(position) || position < 0 || position > data.length) {
+                alert("Invalid position. Please enter a value between 0 and " + data.length);
+                return;
+            }
+            
+            if (newEl === "") {
+                alert("Please enter a valid new element.");
+                return;
+            }
+
+            // Shift elements and insert the new element
+            for (let i = data.length; i > position; i--) {
+                data[i] = data[i - 1];
+            }
+            data[position] = newEl;
+
+            // Display the updated array in the console and on the page
+            console.log("Updated Array:", data);
+            document.getElementById('result').textContent = "Updated Array: " + data.join(", ");
+        }
+    </script>
+</head>
+<body>
+    <h1>Insert Element in Array</h1>
+    <input type="text" id="position" placeholder="Enter position (0-based index)" />
+    <input type="text" id="newEl" placeholder="Enter new element" />
+    <button onclick="Insert()">Insert</button>
+    <p id="result"></p>
+</body>
+</html>
