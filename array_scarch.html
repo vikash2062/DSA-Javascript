@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Search Element in Array</title>
+    <script>
+      function searchElement() {
+        // Array to search
+        let data = [20, 40, 60, 5, 10, 70, 80, 99];
+
+        // Get input value
+        let item = document.getElementById("searchEl").value;
+
+        // Parse input and handle invalid input
+        let parsedItem = parseInt(item);
+        if (isNaN(parsedItem)) {
+          document.getElementById("result").innerText = "Please enter a valid number.";
+          return;
+        }
+
+        // Search for the element
+        let index = -1;
+        for (let i = 0; i < data.length; i++) {
+          if (data[i] === parsedItem) {
+            index = i;
+            break;
+          }
+        }
+
+        // Display the result
+        if (index !== -1) {
+          document.getElementById("result").innerText =
+            `Element found at index: ${index}`;
+        } else {
+          document.getElementById("result").innerText =
+            "Element not found in the array.";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h2>Search for an Element in an Array</h2>
+    <input type="text" placeholder="Enter value" id="searchEl" />
+    <button onclick="searchElement()">Search Element</button>
+    <p id="result"></p>
+  </body>
+</html>
